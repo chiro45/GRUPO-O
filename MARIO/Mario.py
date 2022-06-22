@@ -69,6 +69,93 @@ class MiJuego(arcade.Window):
 			muro.center_x = x
 			muro.center_y = 20
 			self.lista_muro.append(muro)
+
+		coordinate_list = [ 
+							#horizontal vertical
+
+							[604, 140],
+							[650, 140],
+							[714, 140],
+							[778, 140],
+							[842, 300],
+							[906, 300],
+							[970, 300],
+							[1034, 300],
+							[1098, 140],
+							[1162, 140],
+							[1226, 140], #salto
+							[1418, 140],
+							[1482, 140],
+							[1546, 140],
+							[1610, 140],
+							[1674, 140],
+							[1738, 140],
+							[1802, 300],
+							[1866, 300],
+							[1930, 300],
+							[1994, 300],
+							[2058, 140],
+							[2122, 140],
+							[2186, 140],
+							[2150, 140],					
+			]
+		
+
+		for coordinate in coordinate_list:
+			# Add a crate on the ground
+			wall = arcade.Sprite("ground.png", CYLINDER_SCALING)
+			wall.position = coordinate
+			self.wall_list.append(wall)
+
+
+
+			# This shows using a coordinate list to place sprites
+		coordinate_list2 = [ 
+							#horizontal vertical
+
+							[3000, 175]					
+			]
+		
+
+		for coordinate in coordinate_list2:
+			# Add a crate on the ground
+			wall = arcade.Sprite("castillo.png", 0.2)
+			wall.position = coordinate
+			self.wall_list.append(wall)
+		coordinate_list4= [ 
+							#horizontal vertical
+
+							[2930, 280]					
+			]
+		
+
+		for coordinate in coordinate_list4:
+			# Add a crate on the ground
+			wall = arcade.Sprite("mastil.png", 0.2)
+			wall.position = coordinate
+			self.wall_list.append(wall)
+
+
+		
+		coordinate_list3 = [ 
+							#horizontal vertical
+
+							[1866, 3020],
+							[1930, 3200],
+							[1994, 3020],
+							[2058, 140],
+							[2122, 1420],
+							[2186, 1420],
+							[2150, 1420],				
+			]
+		
+
+		for coordinate in coordinate_list3:
+			# Add a crate on the ground
+			wall = arcade.Sprite("nubes.png", 0.2)
+			wall.position = coordinate
+			self.wall_list.append(wall)
+
 		
 
 		self.physics_engine = arcade.PhysicsEnginePlatformer(self.jugador_sprite, self.lista_muro, GRAVEDAD)
