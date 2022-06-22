@@ -40,8 +40,8 @@ class MiJuego(arcade.Window):
 		self.vista_inferior = 0
 		
 		self.vista_izquierda = 0
-
-    def configuracion(self):
+  
+def configuracion(self):
 		self.lista_jugador = arcade.SpriteList()
 		self.lista_muro = arcade.SpriteList()
 		self.lista_moneda = arcade.SpriteList()
