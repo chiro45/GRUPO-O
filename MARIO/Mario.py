@@ -1,24 +1,35 @@
+
 import arcade
 
 ANCHO_PANTALLA = 1000
+
 ALTO_PANTALLA = 500
+
 TITULO_PANTALLA = "MUESTRA DEMO DE MARIO BROS"
 
 #Constantes para escalar los sprites (hojas png)
 ESCALA_PERSONAJE = 0.17
+
 ESCALA_TERRENO = 0.20
+
 ESCALA_TUBERIA = 0.20
 
 #Velocidad del jugador
 VELOCIDAD_MOVIMIENTO_JUGADOR = 5
+
 GRAVEDAD = 1
+
 VELOCIDAD_SALTO_JUGADOR = 20
 
 # cuantos pixeles de margen como minimo entre el personaje
 # y el borde de la pantalla.
+
 MARGEN_VISTA_IZQUIERDA = 250
+
 MARGEN_VISTA_DERECHA = 250
+
 MARGEN_VISTA_INFERIOR = 50
+
 MARGEN_VISTA_SUPERIOR = 100
 
 class MiJuego(arcade.Window):
@@ -52,40 +63,46 @@ class MiJuego(arcade.Window):
 		self.jugador_sprite.centro_x = 64
 		self.jugador_sprite.centro_y = 93
 		self.lista_jugador.append(self.jugador_sprite)
+		#inicia el dibujado del suelo del juego por donde mario corre
+		for x in range(0,200, 64):
+			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
+			muro.center_x = x
+			muro.center_y = 20
+			self.lista_muro.append(muro)
+		
 
-		# Crea el suelo
-		# Esto muestra el uso de un bucle para colocar varios sprites horizontalmente.
+		self.physics_engine = arcade.PhysicsEnginePlatformer(self.jugador_sprite, self.lista_muro, GRAVEDAD)
+	
+	def dibujar(self):
+		arcade.start_render()
+		self.lista_jugador.draw()
+		self.lista_muro.draw()
 
-def dibujar(self):
-		arcade.comienza_renderizar()
-		self.lista_jugador.dibujar()
-		self.lista_pared.dibujar()
-
-def en_presionar_tecla(self, llave, modificadores):
+	def en_presionar_tecla(self, llave, modificadores):
 		"""Se llama cada vez que se presiona una tecla."""
 
-		if llave == arcade.llave.ARRIBA or llave == arcade.llave.W:
+		if llave == arcade.key.UP or llave == arcade.key.W:
 			if self.physics_engine.can_jump():
 				self.jugador_sprite.change_y = VELOCIDAD_SALTO_JUGADOR
-		elif llave == arcade.llave.IZQUIERDA or llave == arcade.llave.A:
-			self.jugador_sprite.cambia_x = -VELOCIDAD_MOVIMIENTO_JUGADOR
-		elif llave == arcade.llave.derecha or llave == arcade.llave.D:
-			self.jugador_sprite.cambia_x = VELOCIDAD_MOVIMIENTO_JUGADOR
+		elif llave == arcade.key.LEFT or llave == arcade.key.A:
+			self.jugador_sprite.change_x = -VELOCIDAD_MOVIMIENTO_JUGADOR
+		elif llave == arcade.key.RIGHT or llave == arcade.key.D:
+			self.jugador_sprite.change_x = VELOCIDAD_MOVIMIENTO_JUGADOR
 
-def liberacion_llave(self, llave, modificadores):
+	def liberacion_llave(self, llave, modificadores):
 		"""Se llama cuando la usuario suelta una clave. """
 
-		if llave == arcade.llave.IZQUIERDA or llave == arcade.llave.A:
-			self.jugador_sprite.cambia_x = 0
-		elif llave == arcade.llave.derecha or llave == arcade.llave.D:
-			self.jugador_sprite.cambia_x = 0
+		if llave == arcade.key.LEFT or llave == arcade.key.A:
+			self.jugador_sprite.change_x  = 0
+		elif llave == arcade.key.RIGHT or llave == arcade.key.D:
+			self.jugador_sprite.change_x = 0
 
-def en_actualizacion(self, tiempo_delta):
+	def en_actualizacion(self, tiempo_delta):
 		""" Movimiento y lógica de juego. """
 
 		# Mueve al jugador con el motor de físicangine
 
-		self.actualiza_motor_fisico()
+		self.physics_engine.update()
 
 		# --- Administrar desplazamiento ---
 
@@ -94,42 +111,42 @@ def en_actualizacion(self, tiempo_delta):
 		cambiado = False
 
         # Desplazarse a la izquierda
-		limite_izquierdo = self.ver_izquierda + MARGEN_VISTA_IZQUIERDA
+		limite_izquierdo = self.vista_izquierda + MARGEN_VISTA_IZQUIERDA
 		if self.jugador_sprite.left < limite_izquierdo:
-			self.ver_izquierda -= limite_izquierdo - self.jugador_sprite.left
+			self.vista_izquierda -= limite_izquierdo - self.jugador_sprite.left
 			cambiado = True
 
 		# Desplazarse a la derecha
-		limite_derecho = self.ver_izquierda + ANCHO_PANTALLA - MARGEN_VISTA_DERECHA
-		if self.jugador_sprite.derecha > limite_derecho:
-			self.ver_izquierda += self.jugador_sprite.derecha - limite_derecho
+		limite_derecho = self.vista_izquierda + ANCHO_PANTALLA - MARGEN_VISTA_DERECHA
+		if self.jugador_sprite.right > limite_derecho:
+			self.vista_izquierda += self.jugador_sprite.right - limite_derecho
 			cambiado = True
 
 		# Desplazarse hacia arriba
-		limite_superior = self.ver_abajo + ALTO_PANTALLA - MARGEN_VISTA_SUPERIOR
-		if self.jugador_sprite.arriba > limite_superior:
-			self.ver_abajo += self.jugador_sprite.arriba - limite_superior
+		limite_superior = self.vista_inferior + ALTO_PANTALLA - MARGEN_VISTA_SUPERIOR
+		if self.jugador_sprite.top > limite_superior:
+			self.vista_inferior += self.jugador_sprite.top - limite_superior
 			cambiado = True
 
         # Desplazarse hacia abajo
-		limite_inferior = self.ver_abajo + MARGEN_VISTA_INFERIOR
-		if self.jugador_sprite.abajo < limite_inferior:
-			self.ver_abajo -= limite_inferior - self.jugador_sprite.abajo
+		limite_inferior = self.vista_inferior + MARGEN_VISTA_INFERIOR
+		if self.jugador_sprite.bottom < limite_inferior:
+			self.vista_inferior -= limite_inferior - self.jugador_sprite.bottom
 			cambiado = True
 
 		if cambiado:
 			# Solo desplácese a números enteros. De lo contrario, terminaremos con píxeles que
 			# no se alineen en la pantalla
-			self.ver_abajo = int(self.ver_abajo)
-			self.ver_izquierda = int(self.ver_izquierda)
+			self.vista_inferior = int(self.vista_inferior)
+			self.vista_izquierda = int(self.vista_izquierda)
 
 			# Hace el desplazamiento
-			arcade.set_viewport(self.ver_izquierda, ANCHO_PANTALLA + self.ver_izquierda, self.ver_abajo,ALTO_PANTALLA + self.ver_abajo)
+			arcade.set_viewport(self.vista_izquierda, ANCHO_PANTALLA + self.vista_izquierda, self.vista_inferior,ALTO_PANTALLA + self.vista_inferior)
 
-	def main():
-		ventana = MiJuego()
-		ventana.config()
-		arcade.corre()
-	
-	if __name__ == "__main__":
-		main()
+def main():
+	window = MiJuego()
+	window.configuracion()
+	arcade.run()
+
+if __name__ == "__main__":
+	main()
