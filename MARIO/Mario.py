@@ -12,7 +12,7 @@ ALTO_PANTALLA = 600
 TITULO_PANTALLA = "MUESTRA DEMO DE MARIO BROS"
 
 #Constantes para escalar los sprites (hojas png)
-ESCALA_PERSONAJE = 0.17
+ESCALA_PERSONAJE = 0.2
 
 ESCALA_TERRENO = 0.20
 
@@ -69,14 +69,13 @@ class MiJuego(arcade.Window):
 		self.lista_jugador.append(self.jugador_sprite)
 		
 		#Crea el piso
-		for x in range(0,4050, 64):
+		for x in range(0,5050, 64):
 			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
 			muro.center_x = x
 			muro.center_y = 20
 			self.lista_muro.append(muro)
-        
-		#Crea los cilindros con una lista
-		coordinate_list = [ 
+		#BLOQUE DE TIERRA AEREO
+		coordenadas_bloqueTierra = [ 
 							#horizontal vertical
 
 							[604, 140],
@@ -107,59 +106,57 @@ class MiJuego(arcade.Window):
 			]
 		
 
-		for coordinate in coordinate_list:
+		for coordenadas in coordenadas_bloqueTierra:
 			# añade en el terreno creado
-			muro = arcade.Sprite("tuberia.png", ESCALA_TUBERIA)
-			muro.position = coordinate
+			muro = arcade.Sprite("terreno.png", ESCALA_TUBERIA)
+			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
-
-
-			# Esto muestra el uso de una lista de coordenadas para colocar sprites
-		coordinate_list2 = [ 
+			#Coordenadas DEL CASTillO
+			coordenadasCastillo = [ 
 							#horizontal vertical
-
 							[3000, 175]					
 			]
 		
 
-		for coordinate in coordinate_list2:
+		for coordenadas in coordenadasCastillo:
 			# Añade y crea el castillo en el terreno
 			muro = arcade.Sprite("castillo.png", 0.2)
-			muro.position = coordinate
+			muro.position = coordenadas
 			self.lista_muro.append(muro)
-		coordinate_list3= [ 
+
+		coordenadasMastil= [ 
 							#horizontal vertical
 							[0, 280],
 							[2930, 280]					
 			]
 		
 
-		for coordinate in coordinate_list3:
+		for coordenadas in coordenadasMastil:
 			# añade y crea el mastil
 			muro = arcade.Sprite("mastil.png", 0.2)
-			muro.position = coordinate
+			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
 
 		
-		coordinate_list4 = [ 
+		coordenadas_nubes = [ 
 							#horizontal vertical
 
-							[1866, 3020],
-							[1930, 3200],
-							[1994, 3020],
-							[2058, 140],
-							[2122, 1420],
-							[2186, 1420],
-							[2150, 1420],				
+							[500, 420],
+							[1000, 600],
+							[1200, 620],
+							[1300, 620],
+							[1400, 520],
+							[2500, 620],
+							[2000, 620],				
 			]
 		
 
-		for coordinate in coordinate_list4:
+		for coordenadas in coordenadas_nubes:
 			# añade y crea las nubes
 			muro = arcade.Sprite("nubes.png", 0.2)
-			muro.position = coordinate
+			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
 		
