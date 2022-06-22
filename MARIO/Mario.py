@@ -172,7 +172,7 @@ class MiJuego(arcade.Window):
 		self.lista_muro.draw()
 
 	def on_key_press(self, llave, modificadores):
-		"""Se llama cada vez que se presiona una tecla."""
+		#Se llama cada vez que se presiona una tecla
 
 		if llave == arcade.key.UP or llave == arcade.key.W:
 			if self.physics_engine.can_jump():
@@ -183,7 +183,7 @@ class MiJuego(arcade.Window):
 			self.jugador_sprite.change_x = VELOCIDAD_MOVIMIENTO_JUGADOR
 
 	def on_key_release(self, llave, modificadores):
-		"""Se llama cuando la usuario suelta una clave. """
+		#Se llama cuando el usuario suelta una clave
 
 		if llave == arcade.key.LEFT or llave == arcade.key.A:
 			self.jugador_sprite.change_x  = 0
@@ -191,7 +191,7 @@ class MiJuego(arcade.Window):
 			self.jugador_sprite.change_x = 0
 
 	def on_update(self, tiempo_delta):
-		""" Movimiento y lógica de juego. """
+		#Movimiento y logica de juego
 
 		# Mueve al jugador con el motor de física engine
 
@@ -236,7 +236,7 @@ class MiJuego(arcade.Window):
 			# Hace el desplazamiento
 			arcade.set_viewport(self.vista_izquierda, ANCHO_PANTALLA + self.vista_izquierda, self.vista_inferior,ALTO_PANTALLA + self.vista_inferior)
 
-
+#main
 def main():
 	window = MiJuego()
 	window.setup()
