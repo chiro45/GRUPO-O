@@ -52,22 +52,22 @@ class MiJuego(arcade.Window):
 		
 		self.vista_izquierda = 0
   
-	def configuracion(self):
+	def setup(self):
 		self.lista_jugador = arcade.SpriteList()
-		self.lista_muro = arcade.SpriteList()
+		self.lista_muro = arcade.SpriteList(use_spatial_hash=True)
 		self.lista_moneda = arcade.SpriteList()
 
 		#Jugador
 		fuente_imagen = "mario.png"
 		self.jugador_sprite = arcade.Sprite(fuente_imagen, ESCALA_PERSONAJE)
-		self.jugador_sprite.centro_x = 64
-		self.jugador_sprite.centro_y = 93
+		self.jugador_sprite.center_x = 120
+		self.jugador_sprite.center_y = 300
 		self.lista_jugador.append(self.jugador_sprite)
 		#inicia el dibujado del suelo del juego por donde mario corre
 		for x in range(0,1250, 64):
 			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
 			muro.center_x = x
-			muro.center_y = 32
+			muro.center_y = 20
 			self.lista_muro.append(muro)
 
 		coordinate_list = [ 
@@ -160,12 +160,12 @@ class MiJuego(arcade.Window):
 
 		self.physics_engine = arcade.PhysicsEnginePlatformer(self.jugador_sprite, self.lista_muro, GRAVEDAD)
 	
-	def dibujar(self):
+	def on_draw(self):
 		arcade.start_render()
 		self.lista_jugador.draw()
 		self.lista_muro.draw()
 
-	def en_presionar_tecla(self, llave, modificadores):
+	def on_key_press(self, llave, modificadores):
 		"""Se llama cada vez que se presiona una tecla."""
 
 		if llave == arcade.key.UP or llave == arcade.key.W:
@@ -176,7 +176,7 @@ class MiJuego(arcade.Window):
 		elif llave == arcade.key.RIGHT or llave == arcade.key.D:
 			self.jugador_sprite.change_x = VELOCIDAD_MOVIMIENTO_JUGADOR
 
-	def liberacion_llave(self, llave, modificadores):
+	def on_key_release(self, llave, modificadores):
 		"""Se llama cuando la usuario suelta una clave. """
 
 		if llave == arcade.key.LEFT or llave == arcade.key.A:
@@ -184,7 +184,7 @@ class MiJuego(arcade.Window):
 		elif llave == arcade.key.RIGHT or llave == arcade.key.D:
 			self.jugador_sprite.change_x = 0
 
-	def en_actualizacion(self, tiempo_delta):
+	def on_update(self, tiempo_delta):
 		""" Movimiento y lógica de juego. """
 
 		# Mueve al jugador con el motor de física engine
@@ -233,7 +233,7 @@ class MiJuego(arcade.Window):
 
 def main():
 	window = MiJuego()
-	window.configuracion()
+	window.setup()
 	arcade.run()
  
 if __name__ == "__main__":
