@@ -115,7 +115,7 @@ class MiJuego(arcade.Window):
 
 
 
-			# This shows using a coordinate list to place sprites
+			# Esto muestra el uso de una lista de coordenadas para colocar sprites
 		coordinate_list2 = [ 
 							#horizontal vertical
 
