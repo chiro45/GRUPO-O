@@ -41,3 +41,18 @@ class MiJuego(arcade.Window):
 		
 		self.vista_izquierda = 0
 
+    def configuracion(self):
+		self.lista_jugador = arcade.SpriteList()
+		self.lista_muro = arcade.SpriteList()
+		self.lista_moneda = arcade.SpriteList()
+
+		#Jugador
+		fuente_imagen = "mario.png"
+		self.jugador_sprite = arcade.Sprite(fuente_imagen, ESCALA_PERSONAJE)
+		self.jugador_sprite.centro_x = 64
+		self.jugador_sprite.centro_y = 93
+		self.lista_jugador.append(self.jugador_sprite)
+
+		# Crea el suelo
+		# Esto muestra el uso de un bucle para colocar varios sprites horizontalmente.
+
