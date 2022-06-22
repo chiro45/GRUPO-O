@@ -126,10 +126,10 @@ def en_actualizacion(self, tiempo_delta):
 			# Hace el desplazamiento
 			arcade.set_viewport(self.ver_izquierda, ANCHO_PANTALLA + self.ver_izquierda, self.ver_abajo,ALTO_PANTALLA + self.ver_abajo)
 
-	def main():
-		ventana = MiJuego()
-		ventana.config()
-		arcade.corre()
+		def main():
+			ventana = MiJuego()
+			ventana.config()
+			arcade.corre()
 	
-	if __name__ == "__main__":
-		main()
+			if __name__ == "__main__":
+				main()
