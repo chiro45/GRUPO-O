@@ -1,7 +1,7 @@
 
 import arcade
 
-ANCHO_PANTALLA = 1000
+ANCHO_PANTALLA = 1200
 
 ALTO_PANTALLA = 500
 
@@ -64,10 +64,10 @@ class MiJuego(arcade.Window):
 		self.jugador_sprite.centro_y = 93
 		self.lista_jugador.append(self.jugador_sprite)
 		#inicia el dibujado del suelo del juego por donde mario corre
-		for x in range(0,200, 64):
+		for x in range(0,1250, 64):
 			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
 			muro.center_x = x
-			muro.center_y = 20
+			muro.center_y = 32
 			self.lista_muro.append(muro)
 
 		coordinate_list = [ 
@@ -102,10 +102,10 @@ class MiJuego(arcade.Window):
 		
 
 		for coordinate in coordinate_list:
-			# Add a crate on the ground
-			wall = arcade.Sprite("tuberia.png", ESCALA_TUBERIA)
-			wall.position = coordinate
-			self.wall_list.append(wall)
+			# añade en el terreno creado
+			muro = arcade.Sprite("tuberia.png", ESCALA_TUBERIA)
+			muro.position = coordinate
+			self.lista_muro.append(muro)
 
 
 
@@ -118,26 +118,26 @@ class MiJuego(arcade.Window):
 		
 
 		for coordinate in coordinate_list2:
-			# Add a crate on the ground
-			wall = arcade.Sprite("castillo.png", 0.2)
-			wall.position = coordinate
-			self.wall_list.append(wall)
-		coordinate_list4= [ 
+			# Añade y crea el castillo en el terreno
+			muro = arcade.Sprite("castillo.png", 0.2)
+			muro.position = coordinate
+			self.lista_muro.append(muro)
+		coordinate_list3= [ 
 							#horizontal vertical
 
 							[2930, 280]					
 			]
 		
 
-		for coordinate in coordinate_list4:
-			# Add a crate on the ground
-			wall = arcade.Sprite("mastil.png", 0.2)
-			wall.position = coordinate
-			self.wall_list.append(wall)
+		for coordinate in coordinate_list3:
+			# añade y crea el mastil
+			muro = arcade.Sprite("mastil.png", 0.2)
+			muro.position = coordinate
+			self.lista_muro.append(muro)
 
 
 		
-		coordinate_list3 = [ 
+		coordinate_list4 = [ 
 							#horizontal vertical
 
 							[1866, 3020],
@@ -150,11 +150,11 @@ class MiJuego(arcade.Window):
 			]
 		
 
-		for coordinate in coordinate_list3:
-			# Add a crate on the ground
-			wall = arcade.Sprite("nubes.png", 0.2)
-			wall.position = coordinate
-			self.wall_list.append(wall)
+		for coordinate in coordinate_list4:
+			# añade y crea las nubes
+			muro = arcade.Sprite("nubes.png", 0.2)
+			muro.position = coordinate
+			self.lista_muro.append(muro)
 
 		
 
@@ -187,7 +187,7 @@ class MiJuego(arcade.Window):
 	def en_actualizacion(self, tiempo_delta):
 		""" Movimiento y lógica de juego. """
 
-		# Mueve al jugador con el motor de físicangine
+		# Mueve al jugador con el motor de física engine
 
 		self.physics_engine.update()
 
@@ -235,6 +235,6 @@ def main():
 	window = MiJuego()
 	window.configuracion()
 	arcade.run()
-
+ 
 if __name__ == "__main__":
 	main()
