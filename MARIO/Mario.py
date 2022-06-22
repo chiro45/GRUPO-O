@@ -16,8 +16,8 @@ VELOCIDAD_SALTO_JUGADOR = 20
 
 # cuantos pixeles de margen como minimo entre el personaje
 # y el borde de la pantalla.
-MARGEN_VISTA_IZQUIERDO = 250
-MARGEN_VISTA_DERECHO = 250
+MARGEN_VISTA_IZQUIERDA = 250
+MARGEN_VISTA_DERECHA = 250
 MARGEN_VISTA_INFERIOR = 50
 MARGEN_VISTA_SUPERIOR = 100
 
@@ -56,12 +56,12 @@ def configuracion(self):
 		# Crea el suelo
 		# Esto muestra el uso de un bucle para colocar varios sprites horizontalmente.
 
-	def dibujar(self):
+def dibujar(self):
 		arcade.comienza_renderizar()
 		self.lista_jugador.dibujar()
 		self.lista_pared.dibujar()
 
-	def en_presionar_tecla(self, llave, modificadores):
+def en_presionar_tecla(self, llave, modificadores):
 		"""Se llama cada vez que se presiona una tecla."""
 
 		if llave == arcade.llave.ARRIBA or llave == arcade.llave.W:
@@ -72,7 +72,7 @@ def configuracion(self):
 		elif llave == arcade.llave.derecha or llave == arcade.llave.D:
 			self.jugador_sprite.cambia_x = VELOCIDAD_MOVIMIENTO_JUGADOR
 
-	def liberacion_llave(self, llave, modificadores):
+def liberacion_llave(self, llave, modificadores):
 		"""Se llama cuando la usuario suelta una clave. """
 
 		if llave == arcade.llave.IZQUIERDA or llave == arcade.llave.A:
@@ -80,7 +80,7 @@ def configuracion(self):
 		elif llave == arcade.llave.derecha or llave == arcade.llave.D:
 			self.jugador_sprite.cambia_x = 0
 
-	def en_actualizacion(self, tiempo_delta):
+def en_actualizacion(self, tiempo_delta):
 		""" Movimiento y lógica de juego. """
 
 		# Mueve al jugador con el motor de físicangine
