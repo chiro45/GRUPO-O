@@ -1,9 +1,9 @@
 
 import arcade
 
-ANCHO_PANTALLA = 1200
+ANCHO_PANTALLA = 800
 
-ALTO_PANTALLA = 500
+ALTO_PANTALLA = 600
 
 TITULO_PANTALLA = "MUESTRA DEMO DE MARIO BROS"
 
@@ -15,7 +15,7 @@ ESCALA_TERRENO = 0.20
 ESCALA_TUBERIA = 0.20
 
 #Velocidad del jugador
-VELOCIDAD_MOVIMIENTO_JUGADOR = 5
+VELOCIDAD_MOVIMIENTO_JUGADOR = 8
 
 GRAVEDAD = 1
 
@@ -64,7 +64,7 @@ class MiJuego(arcade.Window):
 		self.jugador_sprite.center_y = 300
 		self.lista_jugador.append(self.jugador_sprite)
 		#inicia el dibujado del suelo del juego por donde mario corre
-		for x in range(0,1250, 64):
+		for x in range(0,4050, 64):
 			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
 			muro.center_x = x
 			muro.center_y = 20
@@ -124,7 +124,7 @@ class MiJuego(arcade.Window):
 			self.lista_muro.append(muro)
 		coordinate_list3= [ 
 							#horizontal vertical
-
+							[0, 280],
 							[2930, 280]					
 			]
 		
