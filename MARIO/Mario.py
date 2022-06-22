@@ -143,6 +143,7 @@ class MiJuego(arcade.Window):
 			# Hace el desplazamiento
 			arcade.set_viewport(self.vista_izquierda, ANCHO_PANTALLA + self.vista_izquierda, self.vista_inferior,ALTO_PANTALLA + self.vista_inferior)
 
+
 def main():
 	window = MiJuego()
 	window.configuracion()
