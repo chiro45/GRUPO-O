@@ -1,6 +1,10 @@
 
 import arcade
 
+#CONSTANTES
+
+#Constantes para la ventana del juego
+
 ANCHO_PANTALLA = 800
 
 ALTO_PANTALLA = 600
@@ -57,19 +61,21 @@ class MiJuego(arcade.Window):
 		self.lista_muro = arcade.SpriteList(use_spatial_hash=True)
 		self.lista_moneda = arcade.SpriteList()
 
-		#Jugador
+		#Crea el jugador
 		fuente_imagen = "mario.png"
 		self.jugador_sprite = arcade.Sprite(fuente_imagen, ESCALA_PERSONAJE)
 		self.jugador_sprite.center_x = 120
 		self.jugador_sprite.center_y = 300
 		self.lista_jugador.append(self.jugador_sprite)
-		#inicia el dibujado del suelo del juego por donde mario corre
+		
+		#Crea el piso
 		for x in range(0,4050, 64):
 			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
 			muro.center_x = x
 			muro.center_y = 20
 			self.lista_muro.append(muro)
-
+        
+		#Crea los cilindros con una lista
 		coordinate_list = [ 
 							#horizontal vertical
 
@@ -157,7 +163,7 @@ class MiJuego(arcade.Window):
 			self.lista_muro.append(muro)
 
 		
-
+        #Motor de fisica
 		self.physics_engine = arcade.PhysicsEnginePlatformer(self.jugador_sprite, self.lista_muro, GRAVEDAD)
 	
 	def on_draw(self):
