@@ -103,7 +103,7 @@ class MiJuego(arcade.Window):
 
 		for coordinate in coordinate_list:
 			# Add a crate on the ground
-			wall = arcade.Sprite("ground.png", CYLINDER_SCALING)
+			wall = arcade.Sprite("tuberia.png", ESCALA_TUBERIA)
 			wall.position = coordinate
 			self.wall_list.append(wall)
 
