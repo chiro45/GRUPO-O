@@ -82,10 +82,10 @@ class MiJuego(arcade.Window):
 							[650, 140],
 							[714, 140],
 							[778, 140],
-							[842, 300],
-							[906, 300],
-							[970, 300],
-							[1034, 300],
+							[842, 280],
+							[906, 280],
+							[970, 280],
+							[1034, 280],
 							[1098, 140],
 							[1162, 140],
 							[1226, 140], #salto
@@ -95,10 +95,10 @@ class MiJuego(arcade.Window):
 							[1610, 140],
 							[1674, 140],
 							[1738, 140],
-							[1802, 300],
-							[1866, 300],
-							[1930, 300],
-							[1994, 300],
+							[1802, 280],
+							[1866, 280],
+							[1930, 280],
+							[1994, 280],
 							[2058, 140],
 							[2122, 140],
 							[2186, 140],
@@ -155,7 +155,7 @@ class MiJuego(arcade.Window):
 
 		for coordenadas in coordenadas_nubes:
 			# añade y crea las nubes
-			muro = arcade.Sprite("nubes.png", 0.2)
+			muro = arcade.Sprite("nubes.png", 0.3)
 			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
