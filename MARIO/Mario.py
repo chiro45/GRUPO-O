@@ -5,21 +5,21 @@ import arcade
 
 #Constantes para la ventana del juego
 
-ANCHO_PANTALLA = 800
+ANCHO_PANTALLA = 1200
 
 ALTO_PANTALLA = 600
 
 TITULO_PANTALLA = "MUESTRA DEMO DE MARIO BROS"
 
 #Constantes para escalar los sprites (hojas png)
-ESCALA_PERSONAJE = 0.2
+ESCALA_PERSONAJE = 0.15
 
 ESCALA_TERRENO = 0.20
 
-ESCALA_TUBERIA = 0.20
+ESCALA_TUBERIA = 0.2
 
 #Velocidad del jugador
-VELOCIDAD_MOVIMIENTO_JUGADOR = 8
+VELOCIDAD_MOVIMIENTO_JUGADOR = 10
 
 GRAVEDAD = 1
 
@@ -69,7 +69,7 @@ class MiJuego(arcade.Window):
 		self.lista_jugador.append(self.jugador_sprite)
 		
 		#Crea el piso
-		for x in range(0,5050, 64):
+		for x in range(0,6050, 64):
 			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
 			muro.center_x = x
 			muro.center_y = 20
@@ -102,20 +102,24 @@ class MiJuego(arcade.Window):
 							[2058, 140],
 							[2122, 140],
 							[2186, 140],
-							[2150, 140],					
+							[2200, 140],
+							[2236, 140],
+							[2272, 140],
+							[2308, 140],
+							[2344, 140]
 			]
 		
 
 		for coordenadas in coordenadas_bloqueTierra:
 			# añade en el terreno creado
-			muro = arcade.Sprite("terreno.png", ESCALA_TUBERIA)
+			muro = arcade.Sprite("tuberia.png", ESCALA_TUBERIA)
 			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
 			#Coordenadas DEL CASTillO
 			coordenadasCastillo = [ 
 							#horizontal vertical
-							[3000, 175]					
+							[6000, 175]					
 			]
 		
 
@@ -128,7 +132,7 @@ class MiJuego(arcade.Window):
 		coordenadasMastil= [ 
 							#horizontal vertical
 							[0, 280],
-							[2930, 280]					
+							[5900, 280]					
 			]
 		
 
@@ -149,7 +153,47 @@ class MiJuego(arcade.Window):
 							[1300, 620],
 							[1400, 520],
 							[2500, 620],
-							[2000, 620],				
+							[2580, 620],
+							[2670, 620],
+							[2720, 620],
+							[2780, 530],
+							[2800, 620],
+							[2890, 620],
+							[2930, 520],
+							[2980, 620],       
+							[3120, 430],
+							[3250, 620],
+							[3300, 620],      
+							[3680, 620],      
+							[3780, 620],       
+							[3900, 620],       
+							[4000, 520],       
+							[4200, 620],       
+							[4280, 620],
+							[4360, 620],
+							[4400, 620],
+							[4520, 600],
+							[4580, 620],
+							[4640, 620],
+							[4690, 620],
+							[4750, 570],
+							[4800, 620],
+							[4820, 620],
+							[4890, 420], 
+							[5010, 620],
+							[5110, 620],      
+							[5190, 620],      
+							[5250, 620],       
+							[5300, 420],       
+							[5360, 620],       
+							[5390, 640],       
+							[5400, 620],
+							[5480, 420],
+							[5560, 620],
+							[5600, 620],
+							[5640, 620],
+							[5690, 620],
+             
 			]
 		
 
