@@ -19,7 +19,7 @@ ESCALA_TERRENO = 0.20
 ESCALA_TUBERIA = 0.2
 
 #Velocidad del jugador
-VELOCIDAD_MOVIMIENTO_JUGADOR = 10
+VELOCIDAD_MOVIMIENTO_JUGADOR = 8
 
 GRAVEDAD = 1
 
@@ -112,7 +112,7 @@ class MiJuego(arcade.Window):
 
 		for coordenadas in coordenadas_bloqueTierra:
 			# añade en el terreno creado
-			muro = arcade.Sprite("tuberia.png", ESCALA_TUBERIA)
+			muro = arcade.Sprite("terreno.png", ESCALA_TUBERIA)
 			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
