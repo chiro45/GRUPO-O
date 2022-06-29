@@ -9,7 +9,7 @@ ANCHO_PANTALLA = 800
 
 ALTO_PANTALLA = 600
 
-TITULO_PANTALLA = "Super MARIO BROS ARCADE"
+TITULO_PANTALLA = "Nuestro Mario Bros Realizado en Arcade"
 
 #Constantes para escalar los sprites (hojas png)
 ESCALA_PERSONAJE = 0.20
@@ -17,6 +17,7 @@ ESCALA_PERSONAJE = 0.20
 ESCALA_TERRENO = 0.20
 
 ESCALA_TUBERIA = 0.32
+ESCALA_FUEGO = 0.15
 
 #Velocidad del jugador
 VELOCIDAD_MOVIMIENTO_JUGADOR = 8
@@ -100,8 +101,8 @@ class MiJuego(arcade.Window):
 							[1610, 135],
 							[1674, 135],
 							[1738, 135],
-							[1802, 265],#tuberia
-							[1866, 265],
+							[1802, 170],#tuberia
+							[1866, 170],
 							[1930, 160],
 							[1994, 160],
 							[2058, 160],
@@ -133,7 +134,7 @@ class MiJuego(arcade.Window):
 							
 							[938, 120],
 							[1354,120],
-							[1834,365],
+							[1834,270],
 							[2378,120],
 							[2634,170],
 							[2890,170],
@@ -228,7 +229,24 @@ class MiJuego(arcade.Window):
 			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
+		#FUEGO
+			
+		coordenadas_Fuego = [ 
+							[2158, 160],
+							[4640, 120],
+							[4690, 120],
+			]
 		
+
+		for coordenadas in coordenadas_Fuego:
+			# añade en el terreno creado
+			muro = arcade.Sprite("fuego.png", ESCALA_FUEGO)
+			muro.position = coordenadas
+			self.lista_muro.append(muro)
+
+
+
+
         #Motor de fisica
 		self.physics_engine = arcade.PhysicsEnginePlatformer(self.jugador_sprite, self.lista_muro, GRAVEDAD)
 	
