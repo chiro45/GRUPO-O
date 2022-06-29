@@ -37,7 +37,8 @@ MARGEN_VISTA_INFERIOR = 50
 MARGEN_VISTA_SUPERIOR = 100
 
 class MiJuego(arcade.Window):
-
+    
+	
 	def __init__(self):
 
 		super().__init__(ANCHO_PANTALLA, ALTO_PANTALLA, TITULO_PANTALLA)
@@ -47,7 +48,7 @@ class MiJuego(arcade.Window):
 		self.lista_moneda = None
 		self.lista_muro = None
 		self.lista_jugador = None
-
+		self.sonido_base = arcade.load_sound("Sonidos\sonido_base.ogg")
 		#Variable del sprite jugador
 		self.jugador_sprite = None
 
@@ -60,6 +61,8 @@ class MiJuego(arcade.Window):
 		self.lista_jugador = arcade.SpriteList()
 		self.lista_muro = arcade.SpriteList(use_spatial_hash=True)
 		self.lista_moneda = arcade.SpriteList()
+		self.sonido_base = arcade.Sound("Sonidos/sonido_base.ogg",True)
+		self.sonido_base.play(volume=0.4)
 
 		#Crea el jugador
 		fuente_imagen = "mario.png"
@@ -211,7 +214,7 @@ class MiJuego(arcade.Window):
 		arcade.start_render()
 		self.lista_jugador.draw()
 		self.lista_muro.draw()
-
+  
 	def on_key_press(self, llave, modificadores):
 		#Se llama cada vez que se presiona una tecla
 
@@ -275,13 +278,15 @@ class MiJuego(arcade.Window):
 			self.vista_izquierda = int(self.vista_izquierda)
 
 			# Hace el desplazamiento
+   
 			arcade.set_viewport(self.vista_izquierda, ANCHO_PANTALLA + self.vista_izquierda, self.vista_inferior,ALTO_PANTALLA + self.vista_inferior)
-
+		
 #main
+     
 def main():
 	window = MiJuego()
 	window.setup()
 	arcade.run()
  
 if __name__ == "__main__":
-	main()
+    main()
