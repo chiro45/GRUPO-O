@@ -16,10 +16,10 @@ ESCALA_PERSONAJE = 0.15
 
 ESCALA_TERRENO = 0.20
 
-ESCALA_TUBERIA = 0.2
+ESCALA_TUBERIA = 0.32
 
 #Velocidad del jugador
-VELOCIDAD_MOVIMIENTO_JUGADOR = 10
+VELOCIDAD_MOVIMIENTO_JUGADOR = 8
 
 GRAVEDAD = 1
 
@@ -77,61 +77,90 @@ class MiJuego(arcade.Window):
 			muro.center_x = x
 			muro.center_y = 20
 			self.lista_muro.append(muro)
+
 		#BLOQUE DE TIERRA AEREO
 		coordenadas_bloqueTierra = [ 
 							#horizontal vertical
 
-							[604, 140],
-							[650, 140],
-							[714, 140],
-							[778, 140],
-							[842, 280],
-							[906, 280],
-							[970, 280],
-							[1034, 280],
-							[1098, 140],
-							[1162, 140],
-							[1226, 140], #salto
-							[1418, 140],
-							[1482, 140],
-							[1546, 140],
-							[1610, 140],
-							[1674, 140],
-							[1738, 140],
-							[1802, 280],
-							[1866, 280],
-							[1930, 280],
-							[1994, 280],
-							[2058, 140],
-							[2122, 140],
-							[2186, 140],
-							[2200, 140],
-							[2236, 140],
-							[2272, 140],
-							[2308, 140],
-							[2344, 140]
+							[604, 135],
+							[650, 135],
+							[714, 135],
+							[778, 135], #tuberia
+							[842, 270],
+							[906, 270],
+							[970, 270],
+							[1034, 270],
+							[1098, 135],
+							[1162, 135],
+							[1226, 135], 
+							             #tuberia
+							[1482, 135],
+							[1546, 135],
+							[1610, 135],
+							[1674, 135],
+							[1738, 135],
+							[1802, 265],#tuberia
+							[1866, 265],
+							[1930, 160],
+							[1994, 160],
+							[2058, 160],
+							            #salto
+							[2250, 120],
+							            #tuberia
+							[2506, 180],
+						    [2602, 70],#tuberia y bloque
+							[2666, 70],#tuberia y bloque
+							[2762, 230],
+							[2858, 70],#tuberia y bloque
+							[2922, 70],#tuberia y bloque
+							[3018, 180],
+							           #tuberia
+							[3274, 120]
 			]
 		
 
 		for coordenadas in coordenadas_bloqueTierra:
 			# añade en el terreno creado
+			muro = arcade.Sprite("terreno.png", ESCALA_TERRENO)
+			muro.position = coordenadas
+			self.lista_muro.append(muro)
+
+		#TUBERIAS
+		coordenadas_tuberia = [ 
+							#horizontal vertical
+
+							
+							[938, 120],
+							[1354,120],
+							[1834,365],
+							[2378,120],
+							[2634,170],
+							[2890,170],
+							[3146,120]
+							
+							
+			]
+		
+
+		for coordenadas in coordenadas_tuberia:
+			# añade las tuberias entre los bloques de terreno
 			muro = arcade.Sprite("tuberia.png", ESCALA_TUBERIA)
 			muro.position = coordenadas
 			self.lista_muro.append(muro)
 
-			#Coordenadas DEL CASTillO
-			coordenadasCastillo = [ 
+		#Coordenadas DEL CASTillO
+		coordenadasCastillo = [ 
 							#horizontal vertical
 							[6000, 175]					
 			]
 		
-
 		for coordenadas in coordenadasCastillo:
 			# Añade y crea el castillo en el terreno
 			muro = arcade.Sprite("castillo.png", 0.2)
 			muro.position = coordenadas
 			self.lista_muro.append(muro)
-
+        
+		#COORDENADAS MASTIL
 		coordenadasMastil= [ 
 							#horizontal vertical
 							[0, 280],
@@ -146,25 +175,17 @@ class MiJuego(arcade.Window):
 			self.lista_muro.append(muro)
 
 
-		
+		#COORDENADAS NUBES
 		coordenadas_nubes = [ 
 							#horizontal vertical
 
-							[500, 420],
-							[1000, 600],
-							[1200, 620],
-							[1300, 620],
-							[1400, 520],
+							[300,  500],
+							[800, 600],
+							[1200, 550],
+							[1600, 620],
+							[2100, 600],
 							[2500, 620],
-							[2580, 620],
-							[2670, 620],
-							[2720, 620],
-							[2780, 530],
-							[2800, 620],
-							[2890, 620],
-							[2930, 520],
-							[2980, 620],       
-							[3120, 430],
+							[2780, 530],       							
 							[3250, 620],
 							[3300, 620],      
 							[3680, 620],      
