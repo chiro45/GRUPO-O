@@ -9,7 +9,7 @@ ANCHO_PANTALLA = 800
 
 ALTO_PANTALLA = 600
 
-TITULO_PANTALLA = "MUESTRA DEMO DE MARIO BROS"
+TITULO_PANTALLA = "Super MARIO BROS ARCADE"
 
 #Constantes para escalar los sprites (hojas png)
 ESCALA_PERSONAJE = 0.20
@@ -66,7 +66,7 @@ class MiJuego(arcade.Window):
 		self.sonido_base.play(volume=0.4)
 
 		#Crea el jugador
-		fuente_imagen = "mario.png"
+		fuente_imagen = "marioCar.png"
 		self.jugador_sprite = arcade.Sprite(fuente_imagen, ESCALA_PERSONAJE)
 		self.jugador_sprite.center_x = 120
 		self.jugador_sprite.center_y = 300
