@@ -5,14 +5,14 @@ import arcade
 
 #Constantes para la ventana del juego
 
-ANCHO_PANTALLA = 1200
+ANCHO_PANTALLA = 800
 
 ALTO_PANTALLA = 600
 
 TITULO_PANTALLA = "MUESTRA DEMO DE MARIO BROS"
 
 #Constantes para escalar los sprites (hojas png)
-ESCALA_PERSONAJE = 0.15
+ESCALA_PERSONAJE = 0.20
 
 ESCALA_TERRENO = 0.20
 
@@ -49,6 +49,7 @@ class MiJuego(arcade.Window):
 		self.lista_muro = None
 		self.lista_jugador = None
 		self.sonido_base = arcade.load_sound("Sonidos\sonido_base.ogg")
+		self.sonido_salto = arcade.load_sound("Sonidos\salto.ogg")
 		#Variable del sprite jugador
 		self.jugador_sprite = None
 
@@ -242,6 +243,8 @@ class MiJuego(arcade.Window):
 		if llave == arcade.key.UP or llave == arcade.key.W:
 			if self.physics_engine.can_jump():
 				self.jugador_sprite.change_y = VELOCIDAD_SALTO_JUGADOR
+				self.sonido_salto = arcade.Sound("Sonidos/salto.ogg",True)
+				self.sonido_salto.play(volume=0.4)
 		elif llave == arcade.key.LEFT or llave == arcade.key.A:
 			self.jugador_sprite.change_x = -VELOCIDAD_MOVIMIENTO_JUGADOR
 		elif llave == arcade.key.RIGHT or llave == arcade.key.D:
